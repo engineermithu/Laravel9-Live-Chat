@@ -19,7 +19,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::post('sent-message',function (Request $request){
+Route::post('/send-message',function (Request $request){
     event(new Message($request->username,$request->message));
     return ['success'=> true];
 });

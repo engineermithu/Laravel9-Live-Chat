@@ -18,31 +18,37 @@
     <!--Button icon-->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"/>
     @vite(['resources/css/app.css ', 'resources/js/app.js'])
 
 </head>
 <body>
-<div style="padding: 30px;"></div>
-<div class="container">
-    <div class="row">
-        <div class="col-sm-12">
-            <div class="card">
-                <div class="card-header">
-                    <span id="addT">Add new Teacher</span>
-                </div>
-                <div class="card-body">
-                    <div class="mb-3">
-                        <label for="exampleInputEmail1" class="form-label">Name</label>
-                        <input type="text" class="form-control" id="name" aria-describedby="emailHelp">
+<div style="padding: 30px;">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6 offset-sm-3 py-2">
+                <input type="text" class="form-control" id="username" name="username"
+                       placeholder="Enter a user................" />
+            </div>
+
+            <div class="col-sm-6 offset-sm-3">
+                <div class="box box-primary  direct-chat direct-chat-primary">
+                    <div class="box-body">
+                        <div class="direct-chat-messages" id="messages"></div>
                     </div>
-                    <div class="mb-3">
-                        <label for="exampleInputPassword1" class="form-label">Title</label>
-                        <input type="text" class="form-control" id="title">
+
+                    <div class="box-footer">
+                        <form action="" method="post" id="message_form">
+                            <div class="input-group">
+                                <input type="text" id="message" class="form-control" name="message" placeholder="Type a message..." />
+                                <span>
+                                    <button type="submit" id="sent_message" class="btn btn-primary btn-flat"><i
+                                        class="fa fa-paper-plane"></i></button>
+                                </span>
+                            </div>
+                        </form>
                     </div>
-                    <div class="mb-3">
-                        <label for="exampleInputPassword1" class="form-label">Institute</label>
-                        <input type="text" class="form-control" id="institute">
-                    </div>
+
                 </div>
             </div>
         </div>
@@ -53,7 +59,7 @@
 <script>
 
     $.ajaxSetup({
-        headers:{
+        headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
     })
